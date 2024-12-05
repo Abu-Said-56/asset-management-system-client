@@ -1,13 +1,49 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useUserData from "../../hooks/useUserdata";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
+    const userData = useUserData();
+    const { user, logOut } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    const handleLogout = ()=>{
+        logOut()
+        navigate('/')
+    }
 
     const navlinks = <>
-        <NavLink to="/"><li><a className="text-xl">Home</a></li></NavLink>
-        <NavLink to="/joinemployee"><li><a className="text-xl">Join Employee</a></li></NavLink>
-        <NavLink to="/joinHRManager"><li><a className="text-xl">Join HR Manager</a></li></NavLink>
-        {/* <NavLink to="/myprofile"><li><a className="text-xl">My Profile</a></li></NavLink>
-        <NavLink to="/register"><li><a className="text-xl">Register</a></li></NavLink> */}
+        <li className="text-lg "><NavLink to="/">Home</NavLink></li>
+        <>
+            {
+                user ?
+                    <>
+                        {
+                            userData?.role === "employee" ?
+                                <>
+                                    <li className="text-lg "><NavLink to="/myasset">My Assets</NavLink></li>
+                                    <li className="text-lg "><NavLink to="/myteam">My Team</NavLink></li>
+                                    <li className="text-lg "><NavLink to="/requestforasset">Request for an Asset</NavLink></li>
+                                </>
+                                :
+                                <>
+                                    <li className="text-lg "><NavLink to="/myasset">Asset List</NavLink></li>
+                                    <li className="text-lg "><NavLink to="/myteam">Add an Asset</NavLink></li>
+                                    <li className="text-lg "><NavLink to="/requestforasset">All Requests</NavLink></li>
+                                    <li className="text-lg "><NavLink to="/myemployelist">My Employee List</NavLink></li>
+                                    <li className="text-lg "><NavLink to="/addanemploye">Add an Employee</NavLink></li>
+                                </>
+                        }
+                        <li className="text-lg "><NavLink to="/profile">Profile</NavLink></li>
+                    </>
+                    :
+                    <>
+                        <li className="text-lg "><NavLink to="/joinemployee">Join Employee</NavLink></li>
+                        <li className="text-lg "><NavLink to="/joinHRManager">Join HR Manager</NavLink></li>
+                    </>
+            }
+        </>
     </>
 
     return (
@@ -34,16 +70,45 @@ const Navbar = () => {
                         {navlinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Assets Management</a>
+                <a className="btn btn-ghost text-xl">
+                    <img className="h-7" src="https://i.ibb.co.com/WzTWBFp/gradient-accounting-logo-23-2148837587.jpg"/>
+                    Assets Management</a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal">
                     {navlinks}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <button className="btn btn-primary">Register</button>
-                <button className="btn btn-secondary">Login</button>
+            <div className="navbar-end ">
+                {
+                    user ?
+                        <div>
+                            <button onClick={handleLogout} className="btn btn-secondary">LogOut</button>
+                        </div>
+                        :
+                        <div>
+                            {/* <button className="btn btn-primary">Register</button> */}
+                           {/*  */}
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className=" m-1">
+                                    <div >
+                                        <NavLink> <button className="btn btn-outline text-xl  " >Login</button> </NavLink>
+                                    </div>
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                                    
+                                    <Link to="/joinemployee" ><li  className=" mt-1 btn btn-outline btn-sm w-full" >Join Employee</li></Link>
+                                    <Link to="/joinHRManager" ><li  className=" mt-1 btn btn-outline btn-sm w-full " >Join HR Manager</li></Link>
+
+                                </ul>
+                            </div>
+
+
+
+
+                        </div>
+                }
+
             </div>
         </div>
     );
