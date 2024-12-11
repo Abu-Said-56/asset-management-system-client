@@ -13,7 +13,6 @@ const AddEmployee = () => {
 
         const addFoodItems = { Ename, quantity, price, buyername, buyeremail, buyingdate, EphotoURL }
         console.log(addFoodItems);
-
     }
     return (
         <div className="hero bg-blue-100">
