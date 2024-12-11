@@ -7,7 +7,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 const useUserData = () => {
     const {user, loading} = useContext(AuthContext)
     const [userData, setUserData] = useState({})
-    console.log("in hook", userData)
+    // console.log("in hook", userData)
 
     useEffect(()=>{
         const fetchData = async()=>{

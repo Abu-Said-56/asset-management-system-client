@@ -51,7 +51,7 @@ const JoinHRManager = () => {
     const handleGoogleSignIn = () => {
         GoogleLogin()
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
 
                 const employeeInfo = {
                     displayName: result?.user?.displayName,
@@ -65,7 +65,7 @@ const JoinHRManager = () => {
                 //sent to backend
                 axios.post("http://localhost:5001/users", employeeInfo)
                     .then(res => {
-                        console.log(" post = ", res);
+                        // console.log(" post = ", res);
 
                     })
                     .catch(error => {
@@ -81,55 +81,54 @@ const JoinHRManager = () => {
     }
 
     return (
-        <div className="hero bg-blue-200 min-h-screen">
-
-            <div className="hero-content flex-col lg:flex-row">
-
-                <div className="card w-full p-2 max-w-lg shrink-0 border-8 bg-orange-100 border-sky-400 ">
-                    <h1 className="text-5xl font-bold text-center"> Join HR Manager </h1>
-                    <form onSubmit={handleHRManager} className="card-body">
-                        <div className="flex gap-4">
+        <div className="hero bg-blue-100 ">
+            <div className="hero-content mx-auto flex-col lg:flex-row">
+                <div className=" w-full bg-green-100 p-3 rounded-xl max-w-lg mx-auto shrink-0 border-8 border-sky-400 ">
+                    <h1 className="text-4xl font-bold text-center py-4"> Join HR Manager </h1>
+                    <hr />
+                    <form onSubmit={handleHRManager} className="">
+                        <div className="flex gap-2">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Full Name</span>
                                 </label>
-                                <input type="text" name="fullName" placeholder="Full Name" className="input input-bordered" />
+                                <input type="text" name="fullName" placeholder="Full Name" className="input input-bordered" required/>
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Company Name</span>
                                 </label>
-                                <input type="text" name="companyName" placeholder="Company Name" className="input input-bordered" />
+                                <input type="text" name="companyName" placeholder="Company Name" className="input input-bordered" required/>
                             </div>
                         </div>
 
-                        <div className="flex gap-4">
+                        <div className="flex gap-2">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Company Logo</span>
                                 </label>
-                                <input type="text" name="companylogo" placeholder="Company Logo" className="input input-bordered" />
+                                <input type="text" name="companylogo" placeholder="Company Logo" className="input input-bordered" required/>
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name="email" placeholder="email" className="input input-bordered" />
+                                <input type="email" name="email" placeholder="email" className="input input-bordered" required/>
                             </div>
                         </div>
 
-                        <div className="flex gap-4">
+                        <div className="flex gap-2">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" />
+                                <input type="password" name="password" placeholder="password" className="input input-bordered" required/>
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Date Of Birth</span>
                                 </label>
-                                <input type="date" name="dateofbirth" placeholder="Date Of Birth" className="input input-bordered" />
+                                <input type="date" name="dateofbirth" placeholder="Date Of Birth" className="input input-bordered" required/>
                             </div>
                         </div>
 
@@ -137,8 +136,8 @@ const JoinHRManager = () => {
                             <button type="submit" className="btn btn-primary">SignUp</button>
                         </div>
                     </form>
-                    <div className="mx-auto text-center"> 
-                        <button onClick={handleGoogleSignIn} className="btn bg-indigo-400 px-5 mx-auto text-center"><span className="text-4xl"><FcGoogle></FcGoogle></span></button>
+                    <div className="mx-auto text-center pt-2"> 
+                        <button onClick={handleGoogleSignIn} className="btn bg-indigo-400 px-7 mx-auto text-center"><span className="text-4xl"><FcGoogle></FcGoogle></span></button>
                     </div>
                 </div>
             </div>

@@ -28,8 +28,8 @@ const Navbar = () => {
                                 </>
                                 :
                                 <>
-                                    <li className="text-lg "><NavLink to="/myasset">Asset List</NavLink></li>
-                                    <li className="text-lg "><NavLink to="/myteam">Add an Asset</NavLink></li>
+                                    <li className="text-lg "><NavLink to="/assetlist">Asset List</NavLink></li>
+                                    <li className="text-lg "><NavLink to="/addasset">Add Asset</NavLink></li>
                                     <li className="text-lg "><NavLink to="/requestforasset">All Requests</NavLink></li>
                                     <li className="text-lg "><NavLink to="/myemployelist">My Employee List</NavLink></li>
                                     <li className="text-lg "><NavLink to="/addanemploye">Add an Employee</NavLink></li>
@@ -102,10 +102,6 @@ const Navbar = () => {
 
                                 </ul>
                             </div>
-
-
-
-
                         </div>
                 }
 

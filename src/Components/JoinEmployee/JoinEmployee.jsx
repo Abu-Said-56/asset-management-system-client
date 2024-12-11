@@ -87,43 +87,44 @@ const JoinEmployee = () => {
 
 
     return (
-        <div className="hero bg-blue-200 min-h-screen">
+        <div className="hero bg-blue-100 ">
             <div className="hero-content flex-col lg:flex-row">
-                <div className="card w-full p-6 max-w-lg shrink-0 border-8 bg-orange-100 border-sky-400 ">
-                    <h1 className="text-5xl font-bold">Join Employee</h1>
-                    <form onSubmit={handleJoinEmploye} className="card-body">
+                <div className="w-full p-4 rounded-lg max-w-lg shrink-0 border-8 bg-orange-50 border-sky-400 ">
+                    <h1 className="text-5xl font-bold pb-2">Join Employee</h1>
+                    <hr />
+                    <form onSubmit={handleJoinEmploye}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Full Name</span>
                             </label>
-                            <input type="text" name="fullName" placeholder="Full Name" className="input input-bordered" />
+                            <input type="text" name="fullName" placeholder="Full Name" className="input input-bordered" required/>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" />
+                            <input type="email" name="email" placeholder="email" className="input input-bordered" required/>
                         </div>
 
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" />
+                            <input type="password" name="password" placeholder="password" className="input input-bordered" required/>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Date Of Birth</span>
                             </label>
-                            <input type="date" name="dateofbirth" placeholder="Date Of Birth" className="input input-bordered" />
+                            <input type="date" name="dateofbirth" placeholder="Date Of Birth" className="input input-bordered" required/>
                         </div>
                         <div className="form-control mt-6">
                             <button type="submit" className="btn btn-primary">SignUp</button>
                         </div>
 
                     </form>
-                    <div className="mx-auto text-center"> 
-                        <button onClick={handleGoogleSignIn} className="btn bg-sky-300 px-5 mx-auto text-center"><span className="text-4xl"><FcGoogle></FcGoogle></span></button>
+                    <div className="mx-auto pt-2 text-center"> 
+                        <button onClick={handleGoogleSignIn} className="btn bg-sky-300 px-7 mx-auto text-center"><span className="text-4xl"><FcGoogle></FcGoogle></span></button>
                     </div>
                 </div>
             </div>
