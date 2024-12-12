@@ -3,11 +3,6 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyEmployeelist = () => {
-    // for delete operation
-    // const user = useLoaderData();
-    // const [removes, setRemove] = useState(user);
-    // const { _id, displayName, role } = user;
-
     const [employee, setEmployee] = useState([])
     useEffect(() => {
         fetch('https://asset-management-system-server-three.vercel.app/all-users')
@@ -19,7 +14,7 @@ const MyEmployeelist = () => {
     console.log("filtered ; ", onlyEmploye)
 
     const handleRemove = (_id) =>{
-        console.log('remove : ',_id)
+        // console.log('remove : ',_id)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -36,7 +31,7 @@ const MyEmployeelist = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",

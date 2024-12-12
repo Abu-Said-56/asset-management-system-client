@@ -9,18 +9,12 @@ const AddAsset = () => {
         const Pquantity = form.Pquantity.value
         const AImage = form.AImage.value
         const asset = {Pname, Ptype, Pquantity, AImage}
-        console.log(asset);
-        // fetch('https://asset-management-system-server-three.vercel.app/assets', {
-        //     method : 'POST',
-        //     headers : {
-        //         'Content-Type' : 'application/json()',
-        //     },
-        //     body : JSON.stringify(asset)
-        // })
+        // console.log(asset);
+      
         axios.post('https://asset-management-system-server-three.vercel.app/assets',asset)
         .then(res => console.log(res.data))
         .catch(error => {
-            console.error(error)
+            // console.error(error)
         })
     }
     return (

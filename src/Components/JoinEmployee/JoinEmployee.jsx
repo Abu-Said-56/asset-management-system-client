@@ -9,14 +9,10 @@ import { FcGoogle } from "react-icons/fc";
 
 const JoinEmployee = () => {
     const auth = getAuth(app);
-    // const [loginSuccessfuly, setLoginSuccessfuly] = useState('');
-    // const [loginError, setLoginError] = useState('');
-    // const [showPssward, setShowpassward] = useState(false);
-    // const navigate = useNavigate()
+
     const { GoogleLogin } = useContext(AuthContext)
     const { createUser } = useContext(AuthContext);
-    // const location = useLocation()
-    // const from = location.state || '/';
+
     const handleJoinEmploye = e => {
         e.preventDefault();
         const form = e.target;
@@ -31,8 +27,7 @@ const JoinEmployee = () => {
             email,
             password,
             role: "employee",
-            dateofbirth,
-           
+            dateofbirth,        
         }
         console.log(employeeInfo)
 
@@ -48,17 +43,20 @@ const JoinEmployee = () => {
                     .catch(error => {
                         console.error(error);
                     })
+                    Swal.fire("User Login Successfuly");
             })
             .catch(error => {
                 console.error(error);
+                Swal.fire("User Already Exists");
             })
+            form.reset();
     }
 
     // Google Login
     const handleGoogleSignIn = () => {
         GoogleLogin(auth, GoogleLogin)
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
 
                 const employeeInfo = {
                     displayName: result?.user?.displayName,
@@ -70,14 +68,11 @@ const JoinEmployee = () => {
                  //sent to backend
                  axios.post("https://asset-management-system-server-three.vercel.app/users", employeeInfo)
                  .then(res => {
-                     console.log(" post = ", res);
-                     
+                     console.log(" post = ", res);                   
                  })
                  .catch(error => {
                      console.error(error);
                  })
-
-
                 Swal.fire("User Login Successfuly");
             })
             .catch(error => {

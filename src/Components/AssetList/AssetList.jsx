@@ -1,13 +1,9 @@
-import { key } from "localforage";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AssetList = () => {
     // for delete operation
-    const user = useLoaderData();
-    const [removes, setRemove] = useState(user);
-
     const [asset, setAsset] = useState([])
     useEffect(() => {
         fetch('https://asset-management-system-server-three.vercel.app/assets')
@@ -15,13 +11,9 @@ const AssetList = () => {
             .then(data => 
                 setAsset(data))
     }, [])
-    // console.log(employee)
-    //  const onlyAsset = asset.filter(item => item?.role === "employee")
-    console.log("filtered ; ", asset)
-
-
+   
     const handleRemove = (_id) => {
-        console.log('remove : ', _id)
+        // console.log('remove : ', _id)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -38,7 +30,7 @@ const AssetList = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",

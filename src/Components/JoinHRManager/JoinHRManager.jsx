@@ -31,21 +31,22 @@ const JoinHRManager = () => {
         console.log("Hrmanager Info : ", HrManagerInfo);
         createUser(email, password)
             .then(res => {
-                console.log("sign in : ", res)
+                // console.log("sign in : ", res)
                 //sent to backend
                 axios.post("https://asset-management-system-server-three.vercel.app/users", HrManagerInfo)
                     .then(res => {
-                        console.log(" post = ", res)
-                        form.reset();
+                        // console.log(" post = ", res)
                     })
                     .catch(error => {
-                        console.error(error);
+                        // console.error(error);
                     })
+                    Swal.fire("User Login Successfuly");
             })
             .catch(error => {
-                console.error(error);
+                // console.error(error);
+                Swal.fire("User Already Exists");
             })
-
+            form.reset();
     }
     // Google Login
     const handleGoogleSignIn = () => {
@@ -66,17 +67,14 @@ const JoinHRManager = () => {
                 axios.post("https://asset-management-system-server-three.vercel.app/users", employeeInfo)
                     .then(res => {
                         // console.log(" post = ", res);
-
                     })
                     .catch(error => {
-                        console.error(error);
+                        // console.error(error);
                     })
-
-
                 Swal.fire("User Login Successfuly");
             })
             .catch(error => {
-                console.log(error.message)
+                // console.log(error.message)
             })
     }
 

@@ -1,12 +1,29 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useUserData from "../../hooks/useUserdata";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+// import axios from "axios";
 
 const Navbar = () => {
     const userData = useUserData();
     const { user, logOut } = useContext(AuthContext)
     const navigate = useNavigate()
+    
+    
+    // const [userData, setUserData] = useState([])
+
+
+    // useEffect(() => {
+    //     fetch(`https://asset-management-system-server-three.vercel.app/users/${user?.email}`)
+    //         .then(res => res.json())
+    //         .then(data => 
+    //             console.log("nav fetch :", data))
+    // }, [])
+
+        
+        console.log("fetch user : ",userData)
+        
+
 
     const handleLogout = ()=>{
         logOut()
