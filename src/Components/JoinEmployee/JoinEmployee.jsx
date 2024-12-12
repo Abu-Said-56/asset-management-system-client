@@ -40,7 +40,7 @@ const JoinEmployee = () => {
             .then(res => {
                 console.log("sign in : ", res)
                 //sent to backend
-                axios.post("http://localhost:5001/users", employeeInfo)
+                axios.post("https://asset-management-system-server-three.vercel.app/users", employeeInfo)
                     .then(res => {
                         console.log(" post = ", res);
                         form.reset();
@@ -68,7 +68,7 @@ const JoinEmployee = () => {
                     
                 }
                  //sent to backend
-                 axios.post("http://localhost:5001/users", employeeInfo)
+                 axios.post("https://asset-management-system-server-three.vercel.app/users", employeeInfo)
                  .then(res => {
                      console.log(" post = ", res);
                      

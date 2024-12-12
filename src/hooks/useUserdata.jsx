@@ -12,7 +12,7 @@ const useUserData = () => {
     useEffect(()=>{
         const fetchData = async()=>{
             try {
-                const res = await axios.get(`http://localhost:5001/users/${user?.email}`);
+                const res = await axios.get(`https://asset-management-system-server-three.vercel.app/users/${user?.email}`);
                 setUserData(res?.data)
     
                 

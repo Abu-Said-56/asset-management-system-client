@@ -7,7 +7,7 @@ const Profile = () => {
      const userData = useUserData();
 
     return (
-        <div className="card bg-sky-300 w-96 border-[8px] border-blue-500 mx-auto mt-14 shadow-xl">
+        <div className="card bg-orange-50 w-96 border-[8px] border-blue-500 mx-auto mt-14 shadow-xl">
             <div className="py-2"> 
                 {
                     userData?.role === "HRManager"  ? 
